@@ -1,0 +1,165 @@
+'use strict';
+
+var Promise = require('promise');
+var http = require('http');
+var config = require('../config').Config;
+var request = require('request');
+
+var pay = module.exports = function (app) { };
+
+pay.list = function (peer) {
+
+    return new Promise((resolve, reject) => {
+
+        let urlPath = config.URL_PAYMENT_REQUEST_LIST + "?peer=" + peer.id
+        var req = {
+            method: 'GET',
+            url: urlPath,
+            headers: {
+                'Authorization': config.HEADER_AUTHORIZATION_TEST
+            },
+        }
+        $http(req)
+            .then(function (result) {
+                if (result && result.data) {
+                    resolve(result.data)
+                } else {
+                    reject(result)
+                }
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                reject(erro)
+            });
+    })
+},
+
+    pay.detail = function (paymentRequest) {
+        return new Promise((resolve, reject) => {
+            let urlPath = config.URL_PAYMENT_REQUEST_DETAIL + "?id=" + paymentRequest.id
+            var req = {
+                method: 'GET',
+                url: urlPath,
+                headers: {
+                    'Authorization': config.HEADER_AUTHORIZATION_TEST
+                },
+                data: telefones
+            }
+
+            $http(req)
+                .then(function (result) {
+                    if (result && result.data) {
+                        resolve(result.data)
+                    } else {
+                        reject(result)
+                    }
+                })
+
+                .catch(function (erro) {
+                    console.log(erro);
+                    reject(erro)
+                });
+        })
+    },
+
+    pay.send = function (payment) {
+
+
+        return new Promise((resolve, reject) => {
+            let urlPath = config.URL_PAYMENT_REQUEST_ADD
+            var options = {
+                "method": "POST",
+                "hostname": '10.222.18.103',
+                "port": '12001',
+                "path": "/payment-requests",
+                "headers": {
+                    "content-type": "application/json",
+                    'Authorization': config.HEADER_AUTHORIZATION_TEST
+                }
+            };
+
+            var req = http.request(options, function (res) {
+                var chunks = [];
+
+                res.on("data", function (chunk) {
+                    chunks.push(chunk);
+                });
+
+                res.on("end", function () {
+                    var body = JSON.parse(Buffer.concat(chunks).toString());
+                    resolve(pay.token(body[0]))
+                });
+                res.on("error", function (err) { reject(err) });
+            });
+            req.write(JSON.stringify(payment));
+            req.end();
+        });
+    },
+
+    pay.token = function (paymentRequest) {
+
+        return new Promise((resolve, reject) => {
+            let urlPath = config.URL_PAYMENT_REQUEST_ADD
+            var options = {
+                "method": "GET",
+                "hostname": '10.222.18.103',
+                "port": '12001',
+                "path": "/payment-requests"  + "/" + paymentRequest.id + "/token" ,
+                "headers": {
+                    "content-type": "application/json",
+                    'Authorization': config.HEADER_AUTHORIZATION_TEST
+                }
+            };
+
+            var req = http.request(options, function (res) {
+                var chunks = [];
+
+                res.on("data", function (chunk) {
+                    chunks.push(chunk);
+                });
+
+                res.on("end", function () {
+                    var body = JSON.parse(Buffer.concat(chunks).toString());
+                    resolve(body)
+                });
+                res.on("error", function (err) { reject(err) });
+            });
+            req.end();
+        });
+    },
+
+    pay.update = function (payment) {
+
+        return new Promise((resolve, reject) => {
+
+
+            let urlPath = config.URL_PAYMENT_REQUEST_UPDATE
+            var req = {
+                method: 'POST',
+                url: urlPath,
+                headers: {
+                    'Authorization': config.HEADER_AUTHORIZATION_TEST
+                },
+                data: payment
+            }
+
+            $http(req)
+
+                .then(function (result) {
+                    if (result && result.data) {
+                        resolve(result.data)
+                    } else {
+                        reject(result)
+                    }
+                })
+
+                .catch(function (erro) {
+                    console.log(erro);
+                    reject(erro)
+                });
+        })
+
+    },
+
+    pay.cancel = function (payment) {
+    }

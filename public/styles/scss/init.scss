@@ -1,0 +1,17 @@
+//misc settings
+@import 'config/_settings';
+@import 'config/_mixins';
+
+//fonts
+@import 'config/_fonts';
+
+//Responsive plugin
+@import 'config/_breakpoints';
+
+//frameworks
+// @import 'config/bootstrap.min.css';
+@import 'node_modules/jeet/scss/index'; 
+
+//global things
+// @import 'general/_reset';
+@import 'layout/_main';

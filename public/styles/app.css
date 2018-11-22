@@ -1,0 +1,109 @@
+.cart .lista-cart {
+    height: auto !important;
+ }
+
+ .items-cart{
+    border-bottom: 1px dashed #e2e2e2;
+    padding-bottom: 14px !important;
+    margin-bottom: 7px !important;
+ }
+
+ .cart .lista-cart .items-cart .price p {
+    text-align: right;
+}
+
+.app{
+    overflow: hidden;
+}
+
+.li:hover{
+    background: #949494 !important;
+}
+
+.tab-content{
+    padding-right: 10px;
+    height: calc(100vh - 88px);
+    overflow: hidden;
+}
+
+aside{
+    box-shadow: 2px 2px 16px #333333 !important;
+}
+
+.cta{
+    cursor: pointer;
+}
+
+li:hover{
+    background-color: #62a617 !important;
+    padding-left: 32px;
+    font-weight: 800;
+}
+
+a{
+    cursor: pointer;
+}
+
+a:hover{
+    background-color: #62a617 !important;
+    color:#FFFFFF !important;
+}
+
+.price{
+    margin-bottom: -15px;
+}
+
+.txtTotal{
+    font-size: 50px !important;
+}
+
+.formas-pagamento{
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;    
+}
+
+.qrcode{
+    margin-bottom: 10px;
+}
+
+.botaoPagamento:hover{
+    background-color: #62a617;
+    color: #FFFFFF;
+}
+
+.bx-content{
+    widows: 100%;
+}
+
+.titulos{
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+    margin-top: -24px !important;
+    margin-bottom: -28px !important;
+}
+
+.color-price-total {
+    font-size: 25px !important;
+    font-weight: 600 !important;
+}
+
+.bx-right {
+    min-width: 280px ;
+}
+
+.lista-produtos > .item-produto a {
+    cursor: pointer;
+}
+
+.animate-repeat.ng-enter {
+    transition: 1s linear all;
+    opacity: 0;
+  }
+  .animate-repeat.ng-enter-stagger {
+    transition-delay: 1.2s;
+    transition-duration: 0s;
+  }
+  .animate-repeat.ng-enter.ng-enter-active {
+    opacity: 1;
+  }
