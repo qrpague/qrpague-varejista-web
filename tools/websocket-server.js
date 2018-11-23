@@ -1,12 +1,12 @@
 'use strict';
 
-let cfg = require( global.pathRootApp + '/tools/config').Config
+let cfg = require( global.pathRootApp + '/tools/config')
 let WebSocketServer = require('websocket').server
 let http = require("http");
 
 var server = http.createServer();
 
-server.listen(cfg.portWebsocket);
+server.listen(cfg.WEBSOCKET_PORT);
 
 var clients = [];
 

@@ -24,6 +24,7 @@
     "promise": "^7.1.1",
     "raw-body": "^2.3.2",
     "request": "^2.87.0",
+    "request-promise": "^4.2.2",
     "serve-index": "latest",
     "websocket": "^1.0.26"
   },

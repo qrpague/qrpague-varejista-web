@@ -123,7 +123,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
     me.buscaQRCode = function (){
 		var rest = {
 			method: 'POST',
-			url: connectApp.toUrl() + "/getQRCode",
+			url: connectApp.toUrl() + "/qrcode",
 			headers: { 'Content-Type': 'application/json' },
 			data: { valor : me.valorTotal }
 		}

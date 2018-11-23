@@ -9,8 +9,9 @@ let app = express()
 let bodyParser = require('body-parser')
 let methodOverride = require('method-override')
 let cookieParser = require('cookie-parser')
-let cfg = require('./tools/config').Config
+let cfg = require('./tools/config')
 let Security = require('./tools/security');
+let ResourcesNegocio = require('./routes/routes');
 require('./tools/websocket-server')
 
 
@@ -30,24 +31,31 @@ app.use(cookieParser());
 app.use('/', express.static(__dirname + '/public/', { 'index': 'index.html' }));
 
 
-load('models')
-    .then('controllers')
-    .then('models')
-    .then('util')
-    .then('routes')
-    .into(app);
+app.use('/loja', ResourcesNegocio );
 
  
 
 
  
-app.listen(cfg.httpPort, cfg.httpHost, function () {
+app.listen(cfg.PORT, cfg.HOST, function () {
     console.info("########################################################################");
     console.info("##              POWER        SERVER STARTED              POWER        ##");
     console.info("########################################################################");
     console.info('Enviroment: ', cfg.env);
-    console.info('URL: ', cfg.httpHost + ":" + cfg.httpPort);
+    console.info('URL: ', cfg.HOST + ":" + cfg.PORT);
     console.info("------------------------------------------------------------------------");
 });
 
+
+
+function logErrors(err, req, res, next) {
+    console.error(err);
+    next(err);
+  }
+  
+  function errorHandler(err, req, res, next) {
+    var status = err.status || 500;
+    res.status(status).send( err );
+  }
+  
  

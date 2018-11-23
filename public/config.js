@@ -1,16 +1,12 @@
-//config host , port
 
 var connectApp =
   {
 
-  
-
-
     toUrl: function () {
       if (this.protocol)
-        return this.protocol + "://" + this.host + ':' + this.port + '/sfd';
+        return this.protocol + "://" + this.host + ':' + this.port + '/loja';
       else
-        return "http://" + this.host + ':' + this.port + '/sfd';
+        return "http://" + this.host + ':' + this.port + '/loja';
     },
 
     toUrlWebsocket: function () {
