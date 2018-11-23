@@ -1,10 +1,8 @@
 'use strict';
 
-var Promise = require('promise');
-var http = require('http');
-var config = require('../config').Config;
-var request = require('request');
-
+let http = require('http');
+let config = require( global.pathRootApp + '/tools/config').Config;
+ 
 var pay = module.exports = function (app) { };
 
 pay.list = function (peer) {

@@ -9,7 +9,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
     cookieParser = require('cookie-parser'),
-    cfg = require('./config').Config,
+    cfg = require('./tools/config').Config,
     http = require("http");
 
      
@@ -42,8 +42,7 @@ load('models')
     .then('routes')
     .into(app);
 
-var serveIndex = require('serve-index');
-
+ 
 app.use(cookieParser());
 
  

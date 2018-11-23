@@ -1,6 +1,6 @@
 {
-  "name": "samples-registry",
-  "version": "1.0.0",
+  "name": "qrpague-varejista-web",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "start": "node  app.js"

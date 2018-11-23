@@ -1,8 +1,13 @@
-Comando para gerar imagem docker do projeto.
-
- sudo docker build -t registry.sicoob.com.br:5000/sicoob/gearq/sfd/sfd-poc-pos:2 .
+Sistema demo para caixa de loja com pagamento via QRPAGUE
 
 
-Comando para enviar a imagem para o registry do Sicoob
 
- sudo docker push registry.sicoob.com.br:5000/sicoob/gearq/sfd/sfd-poc-pos:2
+Intalação 
+
+execute os comandos abaixo;
+
+1- git clone https://github.com/qrpague/qrpague-varejista-web/.git
+2- npm install 
+3- npm start
+4- Abra o brownser ( chrome , Firefox ou etc )  o link http://localhost:8080
+ 
