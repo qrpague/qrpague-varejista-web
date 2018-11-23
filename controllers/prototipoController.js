@@ -1,7 +1,7 @@
 'use strict';
 
 let  Payments = require(global.pathRootApp + '/resources/payments');
-let  socket = require(global.pathRootApp + '/tools/socket-server.js');
+let  socket = require(global.pathRootApp + '/tools/websocket-server.js');
 
 module.exports = {
 	receiveMessage: function (req, res) {
