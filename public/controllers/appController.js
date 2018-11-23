@@ -5,28 +5,28 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
 	var me = this;
     var escopo = $scope;
     
-    me.listaSanduiches = [{id:1,titulo:'X-buger',valor:10.9},
-                            {id:2,titulo:'X-salada',valor:11.9},
-                            {id:3,titulo:'X-bacon',valor:15.9},
-                            {id:4,titulo:'X-tudo tradicional',valor:20.9},
-                            {id:5,titulo:'X-simples',valor:8.9},
-                            {id:6,titulo:'X-dog',valor:9.9}]
+    me.listaSanduiches = [{id:1,titulo:'X-buger',valor:10.99},
+                            {id:2,titulo:'X-salada',valor:11.99},
+                            {id:3,titulo:'X-bacon',valor:15.99},
+                            {id:4,titulo:'X-tudo tradicional',valor:20.99},
+                            {id:5,titulo:'X-simples',valor:8.99},
+                            {id:6,titulo:'X-dog',valor:9.99}]
 
 
-    me.listaBebidas  = [{id:1,titulo:'Coca-cola',valor:5},
-    {id:2,titulo:'Guaraná',valor:7},
-    {id:3,titulo:'Sprite',valor:8},
-    {id:4,titulo:'Guaraná Limão',valor:5},
-    {id:5,titulo:'7-up',valor:4},
-    {id:6,titulo:'Coca-cola 2 litros',valor:8}]
+    me.listaBebidas  = [{id:1,titulo:'Coca-cola',valor:5.00},
+    {id:2,titulo:'Guaraná',valor:7.00},
+    {id:3,titulo:'Sprite',valor:8.00},
+    {id:4,titulo:'Guaraná Limão',valor:5.00},
+    {id:5,titulo:'7-up',valor:4.00},
+    {id:6,titulo:'Coca-cola 2 litros',valor:8.00}]
 
     
-    me.listaSobremesas   = [{id:1,titulo:'Cupcake limão',valor:10.9},
-    {id:2,titulo:'Cupcake chocolate',valor:11.9},
-    {id:3,titulo:'Casadinho',valor:15.9},
-    {id:4,titulo:'Cupcake simples',valor:20.9},
-    {id:5,titulo:'Doces',valor:8.9},
-    {id:6,titulo:'Cupcake baunilha',valor:9.9}]
+    me.listaSobremesas   = [{id:1,titulo:'Cupcake limão',valor:10.90},
+    {id:2,titulo:'Cupcake chocolate',valor:11.90},
+    {id:3,titulo:'Casadinho',valor:15.90},
+    {id:4,titulo:'Cupcake simples',valor:20.90},
+    {id:5,titulo:'Doces',valor:8.90},
+    {id:6,titulo:'Cupcake baunilha',valor:9.90}]
 
     me.listaPedido = [];
     me.valorTotal = 0;
@@ -125,7 +125,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
 			method: 'POST',
 			url: connectApp.toUrl() + "/qrcode",
 			headers: { 'Content-Type': 'application/json' },
-			data: { valor : me.valorTotal }
+			data: { valor : (''+ me.valorTotal).replace('.','') }
 		}
 
 		$http(rest).then(function (e) {
