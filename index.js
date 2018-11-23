@@ -26,7 +26,8 @@ app.use(methodOverride());
 app.use(bodyParser.json({limit:1024102420, type:'application/json'}));
 app.use(bodyParser.text());
 app.use(cookieParser());
-
+app.use(logErrors);
+app.use(errorHandler);
 
 app.use('/', express.static(__dirname + '/public/', { 'index': 'index.html' }));
 

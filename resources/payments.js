@@ -1,7 +1,7 @@
 'use strict';
 
-let config = require(global.pathRootApp + '/tools/config').Config;
-let HttpUtils = require(global.pathRootApp + '/tools//http')
+let config = require(global.pathRootApp + '/tools/config');
+import HttpUtils from '/tools//http';
 
 module.exports = {
     list : function (peer) {
@@ -61,13 +61,13 @@ module.exports = {
     send : async function (payment) {
 
  
-        let urlPath = config.GATEWAY_BACKEND_USUARIO + '/operacao'
+        let urlPath = config.GATEWAY_QRPAGUE_BACKEND + '/operacao'
         let options = {
             method: 'POST',
             uri: urlPath,
             body: payment,
             headers:{
-                    'Content-Type' : 'application/json'                    
+                'content-type': 'application/json' 
             },
             json: true
             

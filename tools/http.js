@@ -1,24 +1,25 @@
-let rp = require('request-promise');
+import rp from 'request-promise';
 
-module.exports = {
+export default(function(){
 
-    request: function (options) {
-        return rp(options);
+    return {
+        request: function( options ) {
+            return rp(options);
+            
+        },
+        get: function(options){
 
-    },
-    get: function (options) {
+            return rp.get(options);
+        },
 
-        return rp.get(options);
-    },
+        post: function(options){
 
-    post: function (options) {
+            return rp.post(options);
+        },
 
-        return rp.post(options);
-    },
+        put: function(options){
 
-    put: function (options) {
-
-        return rp.put(options);
+            return rp.put(options);
+        }
     }
-}
-
+})();
