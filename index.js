@@ -12,7 +12,7 @@ let cookieParser = require('cookie-parser')
 let cfg = require('./tools/config')
 let Security = require('./tools/security');
 let ResourcesNegocio = require('./routes/routes');
-require('./tools/websocket-server')
+// require('./tools/websocket-server')
 
 
 
