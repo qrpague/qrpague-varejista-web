@@ -67,7 +67,7 @@ module.exports = {
             uri: urlPath,
             body: payment,
             headers:{
-                'content-type': 'application/json' 
+                'Content-Type': 'application/json' 
             },
             json: true
             

@@ -24,7 +24,7 @@ module.exports = {
 				"versao": 1,
 				"cnpjInstituicao": "01234567890123",
 				"valor": operacao.valor,
-				"descricao": "Pagamento do serviço de Advocacia na Meu escritório de advogados.",
+				"descricao": "Pagamento Loja McBurgues",
 				"dataHoraSolicitacao": new Date() ,
 				"dataHoraVencimento": new Date() ,
 				"dataHoraEfetivacao": new Date() ,
