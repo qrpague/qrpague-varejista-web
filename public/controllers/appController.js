@@ -38,7 +38,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
     me.dataPagamento = new Date();
 
     connectApp.protocol = 'http';
-    connectApp.host = 'localhost';
+    connectApp.host = connectApp.host;
     connectApp.port = '8080';
 
     me.qrcode = new QRCode(document.getElementById("qrcode") , '', { width: 256, height: 256, text: '' });
