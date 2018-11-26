@@ -35,9 +35,6 @@ app.use('/', express.static(__dirname + '/public/', { 'index': 'index.html' }));
 app.use('/loja', ResourcesNegocio );
 
  
-
-
- 
 app.listen(cfg.PORT, cfg.HOST, function () {
     console.info("########################################################################");
     console.info("##              POWER        SERVER STARTED              POWER        ##");

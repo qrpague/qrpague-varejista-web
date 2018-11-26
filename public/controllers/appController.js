@@ -37,14 +37,19 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
     me.pagamentoEfetuado = false;
     me.dataPagamento = new Date();
 
-    connectApp.protocol = 'http';
-    connectApp.host = '204.48.27.105';
-    connectApp.port = '9093';
 
+  
     me.qrcode = new QRCode(document.getElementById("qrcode") , '', { width: 256, height: 256, text: '' });
 
     function conectarSocket() {
-        me.connection = new WebSocket('ws://' + connectApp.host + ':4000');
+
+        var params = new URLSearchParams()
+        params.append( 'idTerminal' ,  connectApp.idTerminal )
+
+        let path = '?' + params.toString() 
+        let urlPath = connectApp.websocket_url + path 
+
+        me.connection = new WebSocket( urlPath);
 
         me.connection.onopen = function (event) {
             console.log("Connection opened")

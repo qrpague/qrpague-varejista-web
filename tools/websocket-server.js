@@ -20,17 +20,18 @@ wss.on('open', function open() {
 
 wss.on('request', function (request) {
     var connection = request.accept(null, request.origin);
+    connection.idTerminal = request.resourceURL.query.idTerminal
 
     clients.push(connection) - 1;
 
-    connection.on('message', function (message) {
-        if (message.type === 'utf8') {
-            sendAll(message.utf8Data);
-        }
-        else if (message.type === 'binary') {
-            connection.sendBytes(message.binaryData);
-        }
-    });
+    // connection.on('message', function (message) {
+    //     if (message.type === 'utf8') {
+    //         sendAll(message.utf8Data);
+    //     }
+    //     else if (message.type === 'binary') {
+    //         connection.sendBytes(message.binaryData);
+    //     }
+    // });
 
     connection.on('close', function () {
         for (var i = clients.length - 1; i >= 0; i--) {
@@ -41,10 +42,21 @@ wss.on('request', function (request) {
     });
 });
 
-function sendAll(message) {
-    for (var i = 0; i < clients.length; i++) {
-       clients[i].send(message);
-    }
-}
 
-exports.sendAll = sendAll;
+
+module.exports = {
+    sendAll: function (message) {
+        for (var i = 0; i < clients.length; i++) {
+           clients[i].send(message);
+        }
+    },
+    
+    sendToClient: function (idTerminal, message) {
+        let client = clients.find ( c => { return c.idTerminal == idTerminal })
+        if ( client ) {
+            client.send(message);
+            return true
+        }
+        return false;
+    }
+};
