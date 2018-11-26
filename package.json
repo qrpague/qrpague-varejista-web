@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon --exec babel-node index.js",
-    "debug": "nodemon --exec babel-node --inspect=9226 index.js"
+    "debug": "nodemon --exec babel-node --inspect=9226 index.js",
+    "prod" : "babel-node index.js"
   },
   "dependencies": {
     "async": "^1.4.2",

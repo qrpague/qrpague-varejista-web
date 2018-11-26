@@ -1,7 +1,7 @@
 'use strict';
 
 let config = require(global.pathRootApp + '/tools/config');
-import HttpUtils from '/tools//http';
+import HttpUtils from '/tools/http';
 
 module.exports = {
     list : function (peer) {
