@@ -12,7 +12,7 @@ let cookieParser = require('cookie-parser')
 let cfg = require('./tools/config')
 let Security = require('./tools/security');
 let ResourcesNegocio = require('./routes/routes');
-// require('./tools/websocket-server')
+require('./tools/websocket-server')
 
 
 
@@ -43,6 +43,7 @@ app.listen(cfg.PORT, cfg.HOST, function () {
     console.info("##              POWER        SERVER STARTED              POWER        ##");
     console.info("########################################################################");
     console.info('URL: ', cfg.HOST + ":" + cfg.PORT);
+    console.info('WEBSOCKET: ', cfg.HOST + ":" + cfg.WEBSOCKET_PORT);
     console.info("------------------------------------------------------------------------");
 });
 

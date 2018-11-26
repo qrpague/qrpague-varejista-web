@@ -6,8 +6,17 @@ let  socket = require(global.pathRootApp + '/tools/websocket-server.js');
 module.exports = {
 	
 	receiveMessage: function (req, res, next) {
+		
+		let autorizacao = req.body 
+		if ( !autorizacao ) {
+			return next( 'VAREJISTA_WEB_PARANS_IS_EMPTY' )
+		}
+
+		
 		socket.sendAll('');
-		res.send('Message received and sended to client');
+		
+
+		res.send( resposta );
 	},
 
 	qrcode: async function (req, res, next) {
