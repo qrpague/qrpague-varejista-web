@@ -42,7 +42,6 @@ app.listen(cfg.PORT, cfg.HOST, function () {
     console.info("########################################################################");
     console.info("##              POWER        SERVER STARTED              POWER        ##");
     console.info("########################################################################");
-    console.info('Enviroment: ', cfg.env);
     console.info('URL: ', cfg.HOST + ":" + cfg.PORT);
     console.info("------------------------------------------------------------------------");
 });
