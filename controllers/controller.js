@@ -3,6 +3,8 @@
 let Payments = require(global.pathRootApp + '/resources/payments');
 let socket = require(global.pathRootApp + '/tools/websocket-server.js');
 
+import Config from 'tools/config'
+
 module.exports = {
 
 	notification: async function (req, res, next) {
@@ -11,8 +13,11 @@ module.exports = {
 			if (!autorizacao) {
 				return next('QRPAGUE_VAREJISTA_WEB_PARANS_IS_EMPTY')
 			}
-			let idTerminal = autorizacao.dispositivoConfirmacao.idTerminal
-			let resposta = { status: 'CONFIRMADO', dataHoraAutorizacao: autorizacao.dataHoraAutorizacao }
+			let idTerminal = autorizacao.terminal.idTerminal
+			let resposta = autorizacao.terminal
+			
+			resposta.status =  'CONFIRMADO'	
+			resposta.dataHoraAutorizacao =  autorizacao.dataHoraAutorizacao 
 
 
 			let notificado = await socket.sendToClient(idTerminal, resposta);
@@ -45,7 +50,7 @@ module.exports = {
 				"dataHoraEfetivacao": new Date(),
 				"tipoOperacao": "PAGAMENTO",
 				"situacao": "ABERTO",
-				"callback": "http://0.0.0.0:9093/receivemessage",
+				"callback": Config.URL_CALLBACK_PAY_NOTIFICATION,
 				"terminal": {
 					"idTerminal": "0001128322332",
 					"descricao": "Terminal b9384 ",
@@ -65,7 +70,7 @@ module.exports = {
 
 			return res.status(200).send(resposta);
 		} catch (error) {
-			return next('QRPAGUE_VAREJISTA_WEB_ERROR_CATCH', error)
+			return next('QRPAGUE_VAREJISTA_WEB_ERROR_CATCH'+ error)
 		}
 
 	},
@@ -73,6 +78,23 @@ module.exports = {
 	detail: async function (req, res, next) {
 		try {	
 			let uuid = req.params.uuid
+			let cnpjInstituicao = req.headers['cnpjInstituicao']
+
+			if ( !uuid ) {
+				return next('QRPAGUE_VAREJISTA_WEB_QRCODE_PARAMS_EMPTY')
+
+			}
+			if ( !cnpjInstituicao ) {
+				return next('QRPAGUE_VAREJISTA_WEB_QRCODE_PARAMS_EMPTY')
+			}
+
+			let resposta = await Payments.detail(newPayment)
+			if (!resposta) {
+				next('QRCODE_VAREJISTA_WEB_ERROR_RESPOSTA')
+			}
+
+			return res.status(200).send(resposta);
+
 
 		} catch (error) {
 

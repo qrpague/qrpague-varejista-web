@@ -325,16 +325,14 @@
             </div>
 
             <div class="cart sub-total" ng-show="cx.pagamentoEfetuado == true" style="display:none;position: fixed;top: 0;left: 0;width: 100vw;height: 100vh;background-color: #FFFFFF;text-align: center;">
-                <div style="transform: translate(-50%,-25%);top: 50%;left: 50%;position: relative;    margin-top: -71px;">
+                <div ng-click="cx.novaVenda()" style="transform: translate(-50%,-25%);top: 50%;left: 50%;position: relative;    margin-top: -71px;">
                     <i class="fa fa-check-circle icoOk" aria-hidden="true" style="    font-size: 130px;margin-top: 89px;color: #40a02f;"></i>
                     <h4 class="textoConcluido" style="    border: 0;margin-bottom: 0px;font-size: 37px;color: #40a02f;">Pagamento concluído</h4>
                     <h6 class="textoPagamentoSucesso" style="    font-size: 15px;font-weight: 600;color: #545353;margin-bottom: 28px;">Pagamento efetuado com sucesso!</h6>
                     <p class="txtTotal color-price-total  txtValorPago " style="text-align: center !important;">{{cx.valorTotal | currency:"R$"}}</p>
                     <h4 class="txtDataPago" style="    font-family: Lato, sans-serif;font-size: 10px;font-weight: 700;color: #a0a0a0;padding: 0px 0px;border-bottom: 0px;margin-bottom: 0;">Recebido às {{cx.dataPagamento | date:"dd-MM-yyyy hh:mm:ss"}}</h4>
                 </div>
-                <div class="cta-2" style="width: 192px; margin-top: 188px; margin-left: calc(50% - 95px);">
-                    <a ng-click="cx.novaVenda()">Nova venda</a>
-                </div>
+              
             </div>
 
         </aside>
