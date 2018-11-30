@@ -35,7 +35,7 @@ aside{
 }
 
 li:hover{
-    background-color: #62a617 !important;
+    background-color: #26b560 !important;
     padding-left: 32px;
     font-weight: 800;
 }
@@ -45,8 +45,12 @@ a{
 }
 
 a:hover{
-    background-color: #62a617 !important;
+    background-color: #26b560 !important;
     color:#FFFFFF !important;
+}
+a:link {
+    text-decoration: none;
+    text-decoration-color: #26b560;
 }
 
 .price{
@@ -68,7 +72,7 @@ a:hover{
 }
 
 .botaoPagamento:hover{
-    background-color: #62a617;
+    background-color: #26b560;
     color: #FFFFFF;
 }
 
@@ -106,4 +110,10 @@ a:hover{
   }
   .animate-repeat.ng-enter.ng-enter-active {
     opacity: 1;
+  }
+
+ .botton-back {
+    position: absolute;
+    width: 80%;
+    bottom: 10px;
   }

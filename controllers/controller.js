@@ -41,17 +41,17 @@ module.exports = {
 			var data = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 23);
 
 			let newPayment = {
-				"versao": 1,
-				"cnpjInstituicao": "01234567890123",
-				"valor": operacao.valor,
-				"descricao": "Pagamento Loja McBurgues",
-				"dataHoraSolicitacao": new Date(),
-				"dataHoraVencimento": new Date(),
-				"dataHoraEfetivacao": new Date(),
-				"tipoOperacao": "PAGAMENTO",
-				"situacao": "ABERTO",
-				"callback": Config.URL_CALLBACK_PAY_NOTIFICATION,
-				"terminal": {
+				versao: 1,
+				cnpjInstituicao: "01234567890123",
+				valor: operacao.valor,
+				descricao: "Pagamento Loja McBurgues",
+				dataHoraSolicitacao: new Date(),
+				dataHoraVencimento: new Date(),
+				dataHoraEfetivacao: new Date(),
+				tipoOperacao: "PAGAMENTO",
+				situacao: "ABERTO",
+				callback: Config.URL_CALLBACK_PAY_NOTIFICATION,
+				terminal: {
 					"idTerminal": "0001128322332",
 					"descricao": "Terminal b9384 ",
 					"uf": "DF",
@@ -59,7 +59,8 @@ module.exports = {
 					"latitudeTerminal": "-15.7801",
 					"longitudeTerminal": "-47.9292"
 				},
-				"beneficiario": {}
+				beneficiario: {},
+				itens : operacao.itens
 
 			}
 

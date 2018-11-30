@@ -17,21 +17,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
 
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-aria.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
-        <script src="angular/qrcode.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-aria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="angular/qrcode.min.js"></script>
 
-        <script src="angular/angular-locale_pt-br.js"></script>
-        <script src="angular/ng-table.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="angular/angular-locale_pt-br.js"></script>
+    <script src="angular/ng-table.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
-        <script src="controllers/appController.js"></script>
-        <script src="config.js"></script>
+    <script src="controllers/appController.js"></script>
+    <script src="config.js"></script>
 </head>
 
 <body>
@@ -243,15 +243,19 @@
                             </div>
                         </div>
                     </div>
-                    <div style="    transform: translate(-50%,-50%); top: 50%; left: 50%; position: relative; text-align: center; color: #adadad9c; font-weight: 600;" ng-show="cx.listaPedido.length == 0">Não há itens no carrinho</div>
+                    <div style="    transform: translate(-50%,-50%); top: 50%; left: 50%; position: relative; text-align: center; color: #adadad9c; font-weight: 600;"
+                        ng-show="cx.listaPedido.length == 0">Não há itens no carrinho</div>
                 </div>
                 <div class="total-price">
                     <p style="font-size: 27px;font-weight: 600;">Total</p>
                     <div flex layout="row">
-                        <div flex style="    font-size: 25px !important;font-weight: 600 !important;color: #65686b;">{{cx.listaPedido.length}} itens</div>
-                        <div><p class="color-price-total">{{cx.valorTotal | currency:"R$"}}</p></div>
+                        <div flex style="    font-size: 25px !important;font-weight: 600 !important;color: #65686b;">{{cx.listaPedido.length}}
+                            itens</div>
+                        <div>
+                            <p class="color-price-total">{{cx.valorTotal | currency:"R$"}}</p>
+                        </div>
                     </div>
-                    
+
                 </div>
 
                 <div class="cta">
@@ -290,10 +294,14 @@
                         <p class="color-price-total">{{cx.valorTotal | currency:"R$"}}</p>
                     </div>
 
-                    <div class="cta-2">
-                        <a ng-click="cx.voltarLista()">Voltar</a>
-                    </div>
 
+
+                </div>
+
+
+
+                <div class="cta-2">
+                    <a ng-click="cx.voltarLista()">Voltar</a>
                 </div>
 
             </div>
@@ -308,8 +316,15 @@
                         <div id="qrcode" style="padding-left: 7px;"></div>
                         <h3>{{cx.valorTotal | currency:"R$"}}</h3>
                     </div>
+                    <h4>Compartilhar</h4>
 
-                    <div class="cta-2">
+                    <div class="cta-3">
+                        <a href="https://wa.me/5561982104090" ><img src="./images/icon_whatsapp.svg"></a>
+                        <a ng-click=""><i style="font-size:  3em;" class="fas fa-comments"></i> 
+                             <span>SMS</span></a>
+                    </div>
+
+                    <div class="cta-2 botton-back">
                         <a ng-click="cx.voltarSelecione()">Voltar</a>
                     </div>
 
@@ -320,19 +335,24 @@
             <div class="cart sub-total" ng-show="cx.mostraAguarde == true" style="display:none;position: fixed;top: 0;left: 0;width: 100vw;height: 100vh;background-color: #FFFFFF;text-align: center;">
                 <div style="transform: translate(-50%,-50%);top: 50%;left: 50%;position: relative;">
                     <i class="fa fa-spin fa-spinner" aria-hidden="true" style="    font-size: 90px;margin-top: 89px;color: rgb(64, 160, 47);"></i>
-                    <h4 class="textoRecebendo" style="border: 0px;color: rgb(64, 160, 47);font-size: 17px;margin-top: -5px;">Recebendo pagamento</h4>
+                    <h4 class="textoRecebendo" style="border: 0px;color: rgb(64, 160, 47);font-size: 17px;margin-top: -5px;">Recebendo
+                        pagamento</h4>
                 </div>
             </div>
 
             <div class="cart sub-total" ng-show="cx.pagamentoEfetuado == true" style="display:none;position: fixed;top: 0;left: 0;width: 100vw;height: 100vh;background-color: #FFFFFF;text-align: center;">
                 <div ng-click="cx.novaVenda()" style="transform: translate(-50%,-25%);top: 50%;left: 50%;position: relative;    margin-top: -71px;">
                     <i class="fa fa-check-circle icoOk" aria-hidden="true" style="    font-size: 130px;margin-top: 89px;color: #40a02f;"></i>
-                    <h4 class="textoConcluido" style="    border: 0;margin-bottom: 0px;font-size: 37px;color: #40a02f;">Pagamento concluído</h4>
-                    <h6 class="textoPagamentoSucesso" style="    font-size: 15px;font-weight: 600;color: #545353;margin-bottom: 28px;">Pagamento efetuado com sucesso!</h6>
-                    <p class="txtTotal color-price-total  txtValorPago " style="text-align: center !important;">{{cx.valorTotal | currency:"R$"}}</p>
-                    <h4 class="txtDataPago" style="    font-family: Lato, sans-serif;font-size: 10px;font-weight: 700;color: #a0a0a0;padding: 0px 0px;border-bottom: 0px;margin-bottom: 0;">Recebido às {{cx.dataPagamento | date:"dd-MM-yyyy hh:mm:ss"}}</h4>
+                    <h4 class="textoConcluido" style="    border: 0;margin-bottom: 0px;font-size: 37px;color: #40a02f;">Pagamento
+                        concluído</h4>
+                    <h6 class="textoPagamentoSucesso" style="    font-size: 15px;font-weight: 600;color: #545353;margin-bottom: 28px;">Pagamento
+                        efetuado com sucesso!</h6>
+                    <p class="txtTotal color-price-total  txtValorPago " style="text-align: center !important;">{{cx.valorTotal
+                        | currency:"R$"}}</p>
+                    <h4 class="txtDataPago" style="    font-family: Lato, sans-serif;font-size: 10px;font-weight: 700;color: #a0a0a0;padding: 0px 0px;border-bottom: 0px;margin-bottom: 0;">Recebido
+                        às {{cx.dataPagamento | date:"dd-MM-yyyy hh:mm:ss"}}</h4>
                 </div>
-              
+
             </div>
 
         </aside>

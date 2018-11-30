@@ -132,11 +132,11 @@ body {
 
         a {
             @include center(70%);
-            color: #62a617;
+            color: #26b560;
             text-decoration: none;
 
             background: #FFFFFF;
-            border: 1px solid #62A617;
+            border: 1px solid #26b560;
             border-radius: 4px;
             padding: 10px 0px;
 
@@ -287,7 +287,7 @@ body {
 
     a {
         @include center(100%);
-        background: #62a617;
+        background: #26b560;
 
         font-family: $lt;
         font-size: 20px;
@@ -317,12 +317,12 @@ body {
         font-family: $lt;
         font-size: 20px;
         font-weight: 700;
-        color: #62a617;
+        color: #26b560;
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
 
-        border: solid 3px #62a617;
+        border: solid 3px #26b560;
 
         margin-top: 20px;
         padding: 15px;
@@ -333,7 +333,6 @@ body {
 
     }
 }
-
 
 
 .color-price-total {
