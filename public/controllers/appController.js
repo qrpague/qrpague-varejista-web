@@ -143,7 +143,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
             url: connectApp.toUrl() + "/qrcode",
             headers: { 'Content-Type': 'application/json' },
             data: {
-                valor: ('' + me.valorTotal).replace('.', ''),
+                valor: me.valorTotal, 
                 itens: me.listaPedido
             }
         }
