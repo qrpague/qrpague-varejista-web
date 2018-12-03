@@ -51,14 +51,7 @@ module.exports = {
 				tipoOperacao: "PAGAMENTO",
 				situacao: "ABERTO",
 				callback: Config.URL_CALLBACK_PAY_NOTIFICATION,
-				terminal: {
-					"idTerminal": "0001128322332",
-					"descricao": "Terminal b9384 ",
-					"uf": "DF",
-					"cep": "70000-000",
-					"latitudeTerminal": "-15.7801",
-					"longitudeTerminal": "-47.9292"
-				},
+				terminal : operacao.terminal,
 				beneficiario: {},
 				itens : operacao.itens
 

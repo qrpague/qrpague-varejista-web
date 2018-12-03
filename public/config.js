@@ -21,6 +21,14 @@ var connectApp =
   // connectApp.websocket_url = 'ws://204.48.27.105:4000';
 
   connectApp.idTerminal = '0001128322332'
+  connectApp.terminal = {
+    "idTerminal": "0001128322332",
+    "descricao": "Terminal b9384 ",
+    "uf": "DF",
+    "cep": "70000-000",
+    "latitudeTerminal": "-15.7801",
+    "longitudeTerminal": "-47.9292"
+  },
   connectApp.protocol = 'http';
   connectApp.host = '0.0.0.0';
   connectApp.port = '9093';

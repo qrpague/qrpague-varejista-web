@@ -144,7 +144,8 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
             headers: { 'Content-Type': 'application/json' },
             data: {
                 valor: me.valorTotal, 
-                itens: me.listaPedido
+                itens: me.listaPedido,
+                terminal: connectApp.terminal
             }
         }
 
