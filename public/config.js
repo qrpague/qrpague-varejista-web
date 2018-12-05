@@ -18,7 +18,7 @@ var connectApp =
   connectApp.protocol = 'http';
   connectApp.host = '204.48.27.105';
   connectApp.port = '9093';
-  connectApp.websocket_url = 'ws://crimatex.com/qrpague-ws';
+  connectApp.websocket_url = 'wss://crimatex.com/qrpague-ws';
 
   connectApp.idTerminal = '0001128322332'
   connectApp.terminal = {
