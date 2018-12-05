@@ -6,32 +6,32 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
     var escopo = $scope;
 
     me.listaSanduiches = [
-        { id: 1, titulo: 'X-buger', valor: 10.99, url : connectApp.image_shared_url + 'images/f1.png' },
-        { id: 2, titulo: 'X-salada', valor: 11.99 , url : connectApp.image_shared_url + 'images/f2.png' },
-        { id: 3, titulo: 'X-bacon', valor: 15.99 , url : connectApp.image_shared_url + 'images/f3.png' },
-        { id: 4, titulo: 'X-tudo tradicional', valor: 20.99 , url : connectApp.image_shared_url + 'images/f2.png' },
-        { id: 5, titulo: 'X-simples', valor: 8.99 , url : connectApp.image_shared_url + 'images/f5.png' },
-        { id: 6, titulo: 'X-dog', valor: 9.99, url : connectApp.image_shared_url + 'images/f1.png' }
+        { id: 1, titulo: 'X-buger', valor: 10.99, url: connectApp.image_shared_url + 'images/f1.png' },
+        { id: 2, titulo: 'X-salada', valor: 11.99, url: connectApp.image_shared_url + 'images/f2.png' },
+        { id: 3, titulo: 'X-bacon', valor: 15.99, url: connectApp.image_shared_url + 'images/f3.png' },
+        { id: 4, titulo: 'X-tudo tradicional', valor: 20.99, url: connectApp.image_shared_url + 'images/f2.png' },
+        { id: 5, titulo: 'X-simples', valor: 8.99, url: connectApp.image_shared_url + 'images/f5.png' },
+        { id: 6, titulo: 'X-dog', valor: 9.99, url: connectApp.image_shared_url + 'images/f1.png' }
     ]
 
 
     me.listaBebidas = [
-        { id: 1, titulo: 'Coca-cola', valor: 5.00, url :  connectApp.image_shared_url + 'images/r1.png' },
-        { id: 2, titulo: 'Guaraná', valor: 7.00, url : connectApp.image_shared_url + 'images/r2.png' },
-        { id: 3, titulo: 'Sprite', valor: 8.00, url : connectApp.image_shared_url + 'images/r3.png' },
-        { id: 4, titulo: 'Guaraná Limão', valor: 5.00, url : connectApp.image_shared_url + 'images/r2.png' },
-        { id: 5, titulo: '7-up', valor: 4.00, url : connectApp.image_shared_url + 'images/r4.png' },
-        { id: 6, titulo: 'Coca-cola 2 litros', valor: 8.00, url : connectApp.image_shared_url + 'images/r1.png' }
+        { id: 1, titulo: 'Coca-cola', valor: 5.00, url: connectApp.image_shared_url + 'images/r1.png' },
+        { id: 2, titulo: 'Guaraná', valor: 7.00, url: connectApp.image_shared_url + 'images/r2.png' },
+        { id: 3, titulo: 'Sprite', valor: 8.00, url: connectApp.image_shared_url + 'images/r3.png' },
+        { id: 4, titulo: 'Guaraná Limão', valor: 5.00, url: connectApp.image_shared_url + 'images/r2.png' },
+        { id: 5, titulo: '7-up', valor: 4.00, url: connectApp.image_shared_url + 'images/r4.png' },
+        { id: 6, titulo: 'Coca-cola 2 litros', valor: 8.00, url: connectApp.image_shared_url + 'images/r1.png' }
     ]
 
 
     me.listaSobremesas = [
-        { id: 1, titulo: 'Cupcake limão', valor: 10.90, url : connectApp.image_shared_url + 'images/s1.png' },
-        { id: 2, titulo: 'Cupcake chocolate', valor: 11.90, url : connectApp.image_shared_url + 'images/s2.png' },
-        { id: 3, titulo: 'Casadinho', valor: 15.90, url : connectApp.image_shared_url + 'images/s3.png' },
-        { id: 4, titulo: 'Cupcake simples', valor: 20.90, url : connectApp.image_shared_url + 'images/s2.png' },
-        { id: 5, titulo: 'Doces', valor: 8.90, url : connectApp.image_shared_url + 'images/s5.png' },
-        { id: 6, titulo: 'Cupcake baunilha', valor: 9.90, url : connectApp.image_shared_url + 'images/s1.png' }
+        { id: 1, titulo: 'Cupcake limão', valor: 10.90, url: connectApp.image_shared_url + 'images/s1.png' },
+        { id: 2, titulo: 'Cupcake chocolate', valor: 11.90, url: connectApp.image_shared_url + 'images/s2.png' },
+        { id: 3, titulo: 'Casadinho', valor: 15.90, url: connectApp.image_shared_url + 'images/s3.png' },
+        { id: 4, titulo: 'Cupcake simples', valor: 20.90, url: connectApp.image_shared_url + 'images/s2.png' },
+        { id: 5, titulo: 'Doces', valor: 8.90, url: connectApp.image_shared_url + 'images/s5.png' },
+        { id: 6, titulo: 'Cupcake baunilha', valor: 9.90, url: connectApp.image_shared_url + 'images/s1.png' }
     ]
 
     me.listaPedido = [];
@@ -47,7 +47,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         width: 256,
         height: 256,
         text: '',
-        colorDark: "#26b560",
+        colorDark: "#000000",
         colorLight: "#ffffff"
     }
     me.qrcode = new QRCode(document.getElementById("qrcode"), options)
@@ -143,7 +143,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
             url: connectApp.toUrl() + "/qrcode",
             headers: { 'Content-Type': 'application/json' },
             data: {
-                valor: me.valorTotal, 
+                valor: truncateNumber(me.valorTotal , 2 ) ,
                 itens: me.listaPedido,
                 terminal: connectApp.terminal
             }
@@ -212,3 +212,12 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
     }, 200)
 
 });
+
+
+function truncateNumber(num, n) {
+
+    let m = Math.pow(10, n);
+
+    return Math.trunc(num * m) / m;
+
+}
