@@ -20,7 +20,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         { id: 2, titulo: 'Guaraná', valor: 7.00, url: connectApp.image_shared_url + 'images/r2.png' },
         { id: 3, titulo: 'Sprite', valor: 8.00, url: connectApp.image_shared_url + 'images/r3.png' },
         { id: 4, titulo: 'Guaraná Limão', valor: 5.00, url: connectApp.image_shared_url + 'images/r2.png' },
-        { id: 5, titulo: '7-up', valor: 4.00, url: connectApp.image_shared_url + 'images/r4.png' },
+        { id: 5, titulo: '7-up', valor: 4.00, url: connectApp.image_shared_url + 'images/r5.png' },
         { id: 6, titulo: 'Coca-cola 2 litros', valor: 8.00, url: connectApp.image_shared_url + 'images/r1.png' }
     ]
 
