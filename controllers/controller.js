@@ -59,7 +59,7 @@ module.exports = {
 
 			let resposta = await Payments.send(newPayment)
 			if (!resposta) {
-				next('QRCODE_VAREJISTA_WEB_ERROR_RESPOSTA')
+				return next('QRCODE_VAREJISTA_WEB_ERROR_RESPOSTA')
 			}
 
 			return res.status(200).send(resposta);
