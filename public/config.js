@@ -16,9 +16,11 @@ var connectApp =
 
 
   connectApp.protocol = 'http';
-  connectApp.host = '204.48.27.105';
+  connectApp.host = '0.0.0.0';
   connectApp.port = '9093';
-  connectApp.websocket_url = 'wss://crimatex.com//qrpague-ws';
+  connectApp.websocket_url = 'wss://0.0.0.0:4000';
+  connectApp.image_shared_url = 'http://0.0.0.0:9093/';
+
 
   connectApp.idTerminal = '0001128322332'
   connectApp.terminal = {
@@ -29,8 +31,3 @@ var connectApp =
     "latitudeTerminal": "-15.7801",
     "longitudeTerminal": "-47.9292"
   },
-  // connectApp.protocol = 'http';
-  // connectApp.host = '0.0.0.0';
-  // connectApp.port = '9093';
-  // connectApp.websocket_url = 'ws://0.0.0.0:4000';
-  connectApp.image_shared_url = 'http://204.48.27.105:9093/';
