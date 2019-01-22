@@ -30,4 +30,4 @@ var connectApp =
     "cep": "70000-000",
     "latitudeTerminal": "-15.7801",
     "longitudeTerminal": "-47.9292"
-  },
+  }
