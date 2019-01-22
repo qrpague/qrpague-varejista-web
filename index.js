@@ -32,7 +32,7 @@ app.use(errorHandler);
 app.use('/lanchonete', express.static(__dirname + '/public/', { 'index': 'index.html' }));
 
 
-app.use('/lanchonete', ResourcesNegocio );
+app.use('/lanchonete/loja', ResourcesNegocio );
 
  
 app.listen(cfg.PORT, cfg.HOST, function () {
