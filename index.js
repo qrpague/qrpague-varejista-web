@@ -29,10 +29,10 @@ app.use(cookieParser());
 app.use(logErrors);
 app.use(errorHandler);
 
-app.use('/', express.static(__dirname + '/public/', { 'index': 'index.html' }));
+app.use('/lanchonete', express.static(__dirname + '/public/', { 'index': 'index.html' }));
 
 
-app.use('/loja', ResourcesNegocio );
+app.use('/lanchonete', ResourcesNegocio );
 
  
 app.listen(cfg.PORT, cfg.HOST, function () {
