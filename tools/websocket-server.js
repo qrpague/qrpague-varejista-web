@@ -14,11 +14,10 @@ var wss = new WebSocketServer({
     httpServer: server
 });
 
-wss.on('open', function open() {
-    var txt = '';
-});
+wss.on('open', function open() { });
 
-wss.on('request', function (request) {
+wss.on('request', function (request) { 
+    console.debug( request )
     var connection = request.accept(null, request.origin);
     connection.idTerminal = request.resourceURL.query.idTerminal
 
@@ -50,7 +49,19 @@ module.exports = {
            clients[i].send(message);
         }
     },
-    
+    sendToClients: function (idTerminal, message) {
+
+        let resposta = false ;
+        
+        for (var i = 0; i < clients.length; i++) {
+            let client = clients[i]
+            if ( client &&  c.idTerminal == idTerminal ) {
+                client.send(message);
+                resposta = true ;
+            }
+        }
+        return resposta
+    },
     sendToClient: function (idTerminal, message) {
         let client = clients.find ( c => { return c.idTerminal == idTerminal })
         if ( client ) {

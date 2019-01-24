@@ -20,7 +20,7 @@ module.exports = {
 			resposta.dataHoraAutorizacao =  autorizacao.dataHoraAutorizacao 
 
 
-			let notificado = await socket.sendToClient(idTerminal, resposta);
+			let notificado = await socket.sendToClients(idTerminal, resposta);
 			resposta.notificado = notificado
 
 			return res.send(resposta);
@@ -57,6 +57,8 @@ module.exports = {
 
 			}
 
+			console.log( "NEWPAYMENT", newPayment )
+
 			let resposta = await Payments.send(newPayment)
 			if (!resposta) {
 				return next('QRCODE_VAREJISTA_WEB_ERROR_RESPOSTA')
@@ -76,7 +78,6 @@ module.exports = {
 
 			if ( !uuid ) {
 				return next('QRPAGUE_VAREJISTA_WEB_QRCODE_PARAMS_EMPTY')
-
 			}
 			if ( !cnpjInstituicao ) {
 				return next('QRPAGUE_VAREJISTA_WEB_QRCODE_PARAMS_EMPTY')
