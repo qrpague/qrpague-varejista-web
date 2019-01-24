@@ -21,8 +21,8 @@ var connectApp =
   connectApp.websocket_url = 'wss://0.0.0.0:4000';
   connectApp.image_shared_url = 'http://0.0.0.0:9093/';
 
-
-  connectApp.idTerminal = '0001128322332'
+ 
+  connectApp.idTerminal =  Math.floor((Math.random() * 99999) + 1)
   connectApp.terminal = {
     "idTerminal": "0001128322332",
     "descricao": "Terminal b9384 ",
