@@ -56,7 +56,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
     function conectarSocket() {
 
         var params = new URLSearchParams()
-        params.append('idTerminal', connectApp.idTerminal)
+        params.append('idTerminal',   Math.floor((Math.random() * 100) + 1) )
 
         let path = '?' + params.toString()
         let urlPath = connectApp.websocket_url + path
