@@ -42,6 +42,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
     me.mostraListaItems = true;
     me.pagamentoEfetuado = false;
     me.dataPagamento = new Date();
+    me.contTryConnect = 0;
 
     let options = {
         width: 256,
@@ -80,6 +81,17 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
     me.hash = me.hash = CryptoJS.MD5(new Date().getTime()).toString();
 
     conectarSocket();
+
+    function reconectSocket() {
+        setTimeout(function () {
+
+            me.contTryConnect++;
+
+            if (me.contTryConnect < 60) {
+                conectarSocket();
+            }
+        }, 1000)
+    }
 
     me.adicionarSanduiche = function (id) {
         me.listaPedido.push({ indice: new Date(), dados: me.listaSanduiches[id] });
@@ -143,7 +155,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
             url: connectApp.toUrl() + "/qrcode",
             headers: { 'Content-Type': 'application/json' },
             data: {
-                valor: truncateNumber(me.valorTotal , 2 ) ,
+                valor: truncateNumber(me.valorTotal, 2),
                 itens: me.listaPedido,
                 terminal: connectApp.terminal
             }
