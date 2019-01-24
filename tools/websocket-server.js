@@ -55,7 +55,7 @@ module.exports = {
         
         for (var i = 0; i < clients.length; i++) {
             let client = clients[i]
-            if ( client &&  c.idTerminal == idTerminal ) {
+            if ( client &&  client.idTerminal == idTerminal ) {
                 client.send(message);
                 resposta = true ;
             }
