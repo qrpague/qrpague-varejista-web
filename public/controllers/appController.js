@@ -4,6 +4,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
 
     var me = this;
     var escopo = $scope;
+    me.urlQrcode = ""
 
     me.listaSanduiches = [
         { id: 1, titulo: 'X-buger', valor: 10.99, url: connectApp.image_shared_url + 'images/f1.png' },
@@ -162,10 +163,10 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         }
 
         $http(rest).then(function (e) {
-            let urlQrcode = e.data
+            me.urlQrcode = urlQrcode = e.data
 
             me.qrcode.clear();
-            me.qrcode.makeCode(urlQrcode);
+            me.qrcode.makeCode(me.urlQrcode);
         });
     }
 
@@ -176,6 +177,12 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         me.selecioneTipoPagamento = false;
         me.mostraListaItems = true;
         me.pagamentoEfetuado = false;
+    }
+
+    me.sendBySMS = function() {
+        //TODO: implementar code.
+
+        let urlQrcode = me.urlQrcode 
     }
 
     me.mostraPagamentoEfetuado = function () {
