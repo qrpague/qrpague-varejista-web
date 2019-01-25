@@ -71,7 +71,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         me.connection.onclose = function (event) {
             console.log("Connection closed")
                  // Try to reconnect in 5 seconds
-                setTimeout(function(){ conectarSocket() } , 5000) ;
+                setTimeout(function(){ conectarSocket() } , 1500) ;
            
          }
         me.connection.onerror = function (event) {
