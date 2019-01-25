@@ -19,7 +19,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
     me.listaBebidas = [
         { id: 1, titulo: 'Coca-cola', valor: 5.00, url: connectApp.image_shared_url + 'images/r1.png' },
         { id: 2, titulo: 'Guaraná', valor: 7.00, url: connectApp.image_shared_url + 'images/r2.png' },
-        { id: 3, titulo: 'Sprite', valor: 8.00, url: connectApp.image_shared_url + 'images/r3.png' },
+        { id: 3, titulo: 'Sprite', valor: 7.00, url: connectApp.image_shared_url + 'images/r3.png' },
         { id: 4, titulo: 'Guaraná Limão', valor: 5.00, url: connectApp.image_shared_url + 'images/r2.png' },
         { id: 5, titulo: '7-up', valor: 4.00, url: connectApp.image_shared_url + 'images/r5.png' },
         { id: 6, titulo: 'Coca-cola 2 litros', valor: 8.00, url: connectApp.image_shared_url + 'images/r1.png' }
@@ -70,10 +70,13 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         }
         me.connection.onclose = function (event) {
             console.log("Connection closed")
-        }
+                 // Try to reconnect in 5 seconds
+                setTimeout(function(){ conectarSocket() } , 5000) ;
+           
+         }
         me.connection.onerror = function (event) {
             console.error("Connection error")
-        }
+         }
         me.connection.onmessage = function (event) {
             me.mostraPagamentoEfetuado();
         }
@@ -83,17 +86,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
 
     conectarSocket();
 
-    function reconectSocket() {
-        setTimeout(function () {
-
-            me.contTryConnect++;
-
-            if (me.contTryConnect < 60) {
-                conectarSocket();
-            }
-        }, 1000)
-    }
-
+    
     me.adicionarSanduiche = function (id) {
         me.listaPedido.push({ indice: new Date(), dados: me.listaSanduiches[id] });
         me.valorTotal += me.listaSanduiches[id].valor;

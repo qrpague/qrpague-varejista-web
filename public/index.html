@@ -10,23 +10,22 @@
 
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/app.css">
-    <script src="angular/jquery-1.11.3.js"></script>
+    <script src="libs/jquery-1.11.3.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="angular/angular-material.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="angular/bootstrap.min.css" >
+    <link rel="stylesheet" type="text/css" href="libs/angular-material.min.css">
+    <link rel="stylesheet" href="libs/bootstrap.min.css">
 
-    <script src="angular/bootstrap.min.js"></script>
-    <script src="angular/angular.min.js"></script>
-    <script src="angular/angular-animate.min.js"></script>
-    <script src="angular/angular-aria.min.js"></script>
-    <script src="angular/ui-bootstrap.min.js"></script>
-    <script src="angular/angular-material.min.js"></script>
-    <script src="angular/crypto-js.js"></script>
-    <script src="angular/qrcode.min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+    <script src="libs/angular.min.js"></script>
+    <script src="libs/angular-animate.min.js"></script>
+    <script src="libs/angular-aria.min.js"></script>
+    <script src="libs/ui-bootstrap.min.js"></script>
+    <script src="libs/angular-material.min.js"></script>
+    <script src="libs/crypto-js.js"></script>
+    <script src="libs/qrcode.min.js"></script>
 
-    <script src="angular/angular-locale_pt-br.js"></script>
-    <script src="angular/ng-table.js"></script>
+    <script src="libs/angular-locale_pt-br.js"></script>
+    <script src="libs/ng-table.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script src="config.js"></script>
     <script src="controllers/appController.js"></script>
@@ -317,9 +316,10 @@
                     <h4>Compartilhar</h4>
 
                     <div class="cta-3">
-                        <a href="https://wa.me/5561982104090" ><img src="./images/icon_whatsapp.svg"></a>
-                        <a ng-click="me.sendBySMS"><i style="font-size:  3em;" class="fa fa-comments"></i> 
-                             <span>SMS</span></a>
+                        <a href="#">
+                            <span>Whatsapp</span></a>
+                        <a ng-click="me.sendBySMS">
+                            <span>SMS</span></a>
                     </div>
 
                     <div class="cta-2 botton-back">
