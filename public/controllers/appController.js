@@ -17,24 +17,25 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
 
 
     me.listaBebidas = [
-        { id: 1, titulo: 'Coca-cola', valor: 5.00, url: connectApp.image_shared_url + 'images/r1.png' },
-        { id: 2, titulo: 'Guaraná', valor: 7.00, url: connectApp.image_shared_url + 'images/r2.png' },
+        { id: 1, titulo: 'Coca-cola', valor: 5.99, url: connectApp.image_shared_url + 'images/r1.png' },
+        { id: 2, titulo: 'Guaraná', valor: 7.99, url: connectApp.image_shared_url + 'images/r2.png' },
         { id: 3, titulo: 'Sprite', valor: 7.00, url: connectApp.image_shared_url + 'images/r3.png' },
         { id: 4, titulo: 'Guaraná Limão', valor: 5.00, url: connectApp.image_shared_url + 'images/r2.png' },
-        { id: 5, titulo: '7-up', valor: 4.00, url: connectApp.image_shared_url + 'images/r5.png' },
-        { id: 6, titulo: 'Coca-cola 2 litros', valor: 8.00, url: connectApp.image_shared_url + 'images/r1.png' }
+        { id: 5, titulo: '7-up', valor: 4.99, url: connectApp.image_shared_url + 'images/r5.png' },
+        { id: 6, titulo: 'Coca-cola 2 litros', valor: 8.99, url: connectApp.image_shared_url + 'images/r1.png' }
     ]
 
 
     me.listaSobremesas = [
-        { id: 1, titulo: 'Cupcake limão', valor: 10.90, url: connectApp.image_shared_url + 'images/s1.png' },
-        { id: 2, titulo: 'Cupcake chocolate', valor: 11.90, url: connectApp.image_shared_url + 'images/s2.png' },
-        { id: 3, titulo: 'Casadinho', valor: 15.90, url: connectApp.image_shared_url + 'images/s3.png' },
-        { id: 4, titulo: 'Cupcake simples', valor: 20.90, url: connectApp.image_shared_url + 'images/s2.png' },
-        { id: 5, titulo: 'Doces', valor: 8.90, url: connectApp.image_shared_url + 'images/s5.png' },
-        { id: 6, titulo: 'Cupcake baunilha', valor: 9.90, url: connectApp.image_shared_url + 'images/s1.png' }
+        { id: 1, titulo: 'Cupcake limão', valor: 10.99, url: connectApp.image_shared_url + 'images/s1.png' },
+        { id: 2, titulo: 'Cupcake chocolate', valor: 11.99, url: connectApp.image_shared_url + 'images/s2.png' },
+        { id: 3, titulo: 'Casadinho', valor: 15.99, url: connectApp.image_shared_url + 'images/s3.png' },
+        { id: 4, titulo: 'Cupcake simples', valor: 20.99, url: connectApp.image_shared_url + 'images/s2.png' },
+        { id: 5, titulo: 'Doces', valor: 8.99, url: connectApp.image_shared_url + 'images/s5.png' },
+        { id: 6, titulo: 'Cupcake baunilha', valor: 9.99, url: connectApp.image_shared_url + 'images/s1.png' }
     ]
 
+    
     me.listaPedido = [];
     me.valorTotal = 0;
 
@@ -172,10 +173,23 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         me.pagamentoEfetuado = false;
     }
 
-    me.sendBySMS = function() {
+    me.smsGateway = function() {
         //TODO: implementar code.
+        //0.0.0.0:9006/sms?url=https://lab.sicoobnet.com.br/qrpague/operacoes/5c4b60c6ec76b375ad7e8066&to=61999999999
+
 
         let urlQrcode = me.urlQrcode 
+        let telefone = "61982104090"
+        var rest = {
+            method: 'POST',
+            url: connectApp.url_sms_gateway + "?url="+ urlQrcode +"&to=" + telefone ,
+            headers: { 'Content-Type': 'application/json' },
+            data: { }
+        }
+
+        $http(rest).then(function (e) { 
+            //TODO: EVENTO OK PARA ENVIO.
+         });
     }
 
     me.mostraPagamentoEfetuado = function () {

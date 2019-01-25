@@ -59,52 +59,14 @@
                             <h2>Sanduíches</h2>
                         </div>
 
-                        <!-- lista de produtos -->
-
                         <div class="lista-produtos">
 
-                            <div class="item-produto">
-                                <img src="images/f1.png" alt="">
-                                <h5>X-buger</h5>
-                                <p>R$10,90</p>
-                                <a ng-click="cx.adicionarSanduiche(0)">Adicionar</a>
+                            <div class="item-produto" ng-repeat="(key, value) in cx.listaSanduiches"  ng-if="value.url">
+                                <img src="{{ value.url }}" alt="">
+                                <h5> {{ value.titulo }} </h5>
+                                <p>R$ {{ value.valor }}</p>
+                                <a ng-click=" cx.adicionarSanduiche(key) ">Adicionar</a>
                             </div>
-
-                            <div class="item-produto">
-                                <img src="images/f2.png" alt="">
-                                <h5>X-salada</h5>
-                                <p>R$11,90</p>
-                                <a ng-click="cx.adicionarSanduiche(1)">Adicionar</a>
-                            </div>
-
-                            <div class="item-produto">
-                                <img src="images/f3.png" alt="">
-                                <h5>X-bacon</h5>
-                                <p>R$15,90</p>
-                                <a ng-click="cx.adicionarSanduiche(2)">Adicionar</a>
-                            </div>
-
-                            <div class="item-produto">
-                                <img src="images/f2.png" alt="">
-                                <h5>X-tudo tradicional</h5>
-                                <p>R$20,90</p>
-                                <a ng-click="cx.adicionarSanduiche(3)">Adicionar</a>
-                            </div>
-
-                            <div class="item-produto">
-                                <img src="images/f5.png" alt="">
-                                <h5>X-simples</h5>
-                                <p>R$8,90</p>
-                                <a ng-click="cx.adicionarSanduiche(4)">Adicionar</a>
-                            </div>
-
-                            <div class="item-produto">
-                                <img src="images/f1.png" alt="">
-                                <h5>X-dog</h5>
-                                <p>R$9,90</p>
-                                <a ng-click="cx.adicionarSanduiche(5)">Adicionar</a>
-                            </div>
-
                         </div>
 
                     </div>
@@ -119,51 +81,16 @@
 
                         <div class="lista-produtos">
 
-                            <div class="item-produto">
-                                <img src="images/r1.png" alt="">
-                                <h5>Coca-cola</h5>
-                                <p>R$5,00</p>
-                                <a ng-click="cx.adicionarBebida(0)">Adicionar</a>
+                            <div class="item-produto" ng-repeat="(key, value) in cx.listaBebidas" ng-if="value.url">
+                                <img src="{{ value.url }}" alt="">
+                                <h5> {{ value.titulo }} </h5>
+                                <p>R$ {{ value.valor }}</p>
+                                <a ng-click=" cx.adicionarBebida(key) ">Adicionar</a>
                             </div>
-
-                            <div class="item-produto">
-                                <img src="images/r2.png" alt="">
-                                <h5>Guaraná</h5>
-                                <p>R$7,00</p>
-                                <a ng-click="cx.adicionarBebida(1)">Adicionar</a>
-                            </div>
-
-                            <div class="item-produto">
-                                <img src="images/r3.png" alt="">
-                                <h5>Sprite</h5>
-                                <p>R$7,00</p>
-                                <a ng-click="cx.adicionarBebida(2)">Adicionar</a>
-                            </div>
-
-                            <div class="item-produto">
-                                <img src="images/r2.png" alt="">
-                                <h5>Guaraná Limão</h5>
-                                <p>R$5,00</p>
-                                <a ng-click="cx.adicionarBebida(3)">Adicionar</a>
-                            </div>
-
-                            <div class="item-produto">
-                                <img src="images/r5.png" alt="">
-                                <h5>7-up</h5>
-                                <p>R$4,00</p>
-                                <a ng-click="cx.adicionarBebida(4)">Adicionar</a>
-                            </div>
-
-                            <div class="item-produto">
-                                <img src="images/r1.png" alt="">
-                                <h5>Coca-cola 2 litros</h5>
-                                <p>R$8,00</p>
-                                <a ng-click="cx.adicionarBebida(5)">Adicionar</a>
-                            </div>
-
                         </div>
 
                     </div>
+
                     <div id="tab-3" class="tab-content">
 
                         <!-- títulos das categorias de produtos -->
@@ -175,48 +102,12 @@
 
                         <div class="lista-produtos">
 
-                            <div class="item-produto">
-                                <img src="images/s1.png" alt="">
-                                <h5>Cupcake limão</h5>
-                                <p>R$10,90</p>
-                                <a ng-click="cx.adicionarSobremesa(0)">Adicionar</a>
+                            <div class="item-produto" ng-repeat="(key, value) in cx.listaSobremesas"  ng-if="value.url">
+                                <img src="{{ value.url }}" alt="">
+                                <h5> {{ value.titulo }} </h5>
+                                <p>R$ {{ value.valor }}</p>
+                                <a ng-click=" cx.adicionarSobremesa(key) ">Adicionar</a>
                             </div>
-
-                            <div class="item-produto">
-                                <img src="images/s2.png" alt="">
-                                <h5>Cupcake chocolate</h5>
-                                <p>R$11,90</p>
-                                <a ng-click="cx.adicionarSobremesa(1)">Adicionar</a>
-                            </div>
-
-                            <div class="item-produto">
-                                <img src="images/s3.png" alt="">
-                                <h5>Casadinho</h5>
-                                <p>R$15,90</p>
-                                <a ng-click="cx.adicionarSobremesa(2)">Adicionar</a>
-                            </div>
-
-                            <div class="item-produto">
-                                <img src="images/s2.png" alt="">
-                                <h5>Cupcake simples</h5>
-                                <p>R$20,90</p>
-                                <a ng-click="cx.adicionarSobremesa(3)">Adicionar</a>
-                            </div>
-
-                            <div class="item-produto">
-                                <img src="images/s5.png" alt="">
-                                <h5>Doces</h5>
-                                <p>R$8,90</p>
-                                <a ng-click="cx.adicionarSobremesa(4)">Adicionar</a>
-                            </div>
-
-                            <div class="item-produto">
-                                <img src="images/s1.png" alt="">
-                                <h5>Cupcake baunilha</h5>
-                                <p>R$9,90</p>
-                                <a ng-click="cx.adicionarSobremesa(5)">Adicionar</a>
-                            </div>
-
                         </div>
 
                     </div>
@@ -320,7 +211,7 @@
                     <div class="cta-3">
                         <a href="#">
                             <span>Whatsapp</span></a>
-                        <a ng-click="me.sendBySMS">
+                        <a ng-click="cx.smsGateway()">
                             <span>SMS</span></a>
                     </div>
 
