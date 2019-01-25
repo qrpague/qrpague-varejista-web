@@ -237,6 +237,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         $('.bx-content').css({ width: "100%" });
     }, 200)
 
+    setTimeout(function(){ me.novaVenda()} , 5000)
 });
 
 
