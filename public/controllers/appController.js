@@ -227,6 +227,9 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
                 $scope.$apply();
             }, 2000)
 
+            setTimeout(function(){ me.novaVenda()} , 5000)
+
+
         }, 100)
     }
 
@@ -237,7 +240,6 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         $('.bx-content').css({ width: "100%" });
     }, 200)
 
-    setTimeout(function(){ me.novaVenda()} , 5000)
 });
 
 
