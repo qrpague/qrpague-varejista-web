@@ -61,7 +61,7 @@
 
                         <div class="lista-produtos">
 
-                            <div class="item-produto" ng-repeat="(key, value) in cx.listaSanduiches"  ng-if="value.url">
+                            <div class="item-produto" ng-repeat="(key, value) in cx.listaSanduiches" ng-if="value.url">
                                 <img src="{{ value.url }}" alt="">
                                 <h5> {{ value.titulo }} </h5>
                                 <p>R$ {{ value.valor }}</p>
@@ -102,7 +102,7 @@
 
                         <div class="lista-produtos">
 
-                            <div class="item-produto" ng-repeat="(key, value) in cx.listaSobremesas"  ng-if="value.url">
+                            <div class="item-produto" ng-repeat="(key, value) in cx.listaSobremesas" ng-if="value.url">
                                 <img src="{{ value.url }}" alt="">
                                 <h5> {{ value.titulo }} </h5>
                                 <p>R$ {{ value.valor }}</p>
@@ -184,11 +184,7 @@
                         <p class="color-price-total">{{cx.valorTotal | currency:"R$"}}</p>
                     </div>
 
-
-
                 </div>
-
-
 
                 <div class="cta-2">
                     <a ng-click="cx.voltarLista()">Voltar</a>
@@ -208,13 +204,15 @@
                     </div>
                     <h4>Compartilhar</h4>
 
-                    <div class="cta-3">
- 
-                            <button class="btn btn-light"  ng-click="cx.smsGateway()">
-                                    <span>SMS</span> 
+                    <div class="box-shared input-group mb-3">
+                        <label>SMS</label>
 
-                               </button>
+                        <input type="number"  ng-model="cx.sharedNumber" class="form-control" placeholder="(00) 0000-0000"
+                            aria-label="Telefone" aria-describedby="basic-addon1">
+
                     </div>
+                    <button class="btn btn-light"  type="button"  ng-click="cx.sharedDialog()"><span>Enviar</span></button>
+
 
                     <div class="cta-2 botton-back">
                         <a ng-click="cx.voltarSelecione()">Voltar</a>

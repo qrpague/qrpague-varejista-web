@@ -53,35 +53,9 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         colorDark: "#000000",
         colorLight: "#ffffff"
     }
+
+
     me.qrcode = new QRCode(document.getElementById("qrcode"), options)
-
-
-    function conectarSocket() {
-
-        var params = new URLSearchParams()
-        params.append('idTerminal', connectApp.idTerminal)
-
-        let path = '?' + params.toString()
-        let urlPath = connectApp.websocket_url + path
-
-        me.connection = new WebSocket(urlPath);
-
-        me.connection.onopen = function (event) {
-            console.log("Connection opened")
-        }
-        me.connection.onclose = function (event) {
-            console.log("Connection closed")
-                 // Try to reconnect in 5 seconds
-                setTimeout(function(){ conectarSocket() } , 1500) ;
-           
-         }
-        me.connection.onerror = function (event) {
-            console.error("Connection error")
-         }
-        me.connection.onmessage = function (event) {
-            me.mostraPagamentoEfetuado();
-        }
-    };
 
     me.hash = me.hash = CryptoJS.MD5(new Date().getTime()).toString();
 
@@ -173,23 +147,14 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         me.pagamentoEfetuado = false;
     }
 
-    me.smsGateway = function() {
-        //TODO: implementar code.
-        //0.0.0.0:9006/sms?url=https://lab.sicoobnet.com.br/qrpague/operacoes/5c4b60c6ec76b375ad7e8066&to=61999999999
+   
+    me.sharedNumber = undefined 
+    me.sharedDialog = function( ){
+        console.log ( "request SMS API " , me.sharedNumber)
+         if ( me.sharedNumber ) {
+            requestApiSMS(me.sharedNumber )
 
-
-        let urlQrcode = me.urlQrcode 
-        let telefone = "61982104090"
-        var rest = {
-            method: 'POST',
-            url: connectApp.url_sms_gateway + "?url="+ urlQrcode +"&to=" + telefone ,
-            headers: { 'Content-Type': 'application/json' },
-            data: { }
         }
-
-        $http(rest).then(function (e) { 
-            //TODO: EVENTO OK PARA ENVIO.
-         });
     }
 
     me.mostraPagamentoEfetuado = function () {
@@ -232,6 +197,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
 
         }, 100)
     }
+    
 
     $('.bx-content').css({ width: "100%" });
     $('.bx-right').css({ right: -500, 'min-width': '0px', 'width': '0px' });
@@ -239,6 +205,63 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         $('.bx-right').animate({ right: 0, 'min-width': '328px', 'width': '328px' }, 500);
         $('.bx-content').css({ width: "100%" });
     }, 200)
+
+
+    
+    function conectarSocket( ) {
+
+        var params = new URLSearchParams()
+        params.append('idTerminal', connectApp.idTerminal)
+
+        let path = '?' + params.toString()
+        let urlPath = connectApp.websocket_url + path
+
+        me.connection = new WebSocket(urlPath);
+
+        me.connection.onopen = function (event) {
+            console.log("Connection opened")
+        }
+        me.connection.onclose = function (event) {
+            console.log("Connection closed")
+                 // Try to reconnect in 5 seconds
+                setTimeout(function(){ conectarSocket() } , 1500) ;
+           
+         }
+        me.connection.onerror = function (event) {
+            console.error("Connection error")
+         }
+        me.connection.onmessage = function (event) {
+            me.mostraPagamentoEfetuado();
+        }
+    };
+
+    function requestApiSMS ( number ) {
+        //TODO: implementar code.
+        //0.0.0.0:9006/sms?url=https://lab.sicoobnet.com.br/qrpague/operacoes/5c4b60c6ec76b375ad7e8066&to=61999999999
+         
+
+        let urlQrcode = me.urlQrcode 
+        let telefone =  number || "61982104090"
+        var rest = {
+            method: 'POST',
+            url: connectApp.url_sms_gateway + "?url="+ urlQrcode +"&to=" + telefone ,
+            headers: { 'Content-Type': 'application/json' },
+            data: { }
+        }
+
+        $http(rest)
+        .then(function (success , error ) {
+            if ( error ) {
+                return  console.log( "SMS API ERROR ",error)
+
+            }
+            return console.log( "SMS API RETURN -> ", success )
+         })
+         .catch( function ( error ){
+            return console.log( "SMS API ERROR -> ", error )
+         })
+         
+    }
 
 });
 
