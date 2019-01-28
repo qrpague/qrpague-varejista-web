@@ -1,5 +1,21 @@
 var appT = angular.module('app', ['ngMaterial', 'ngRoute', 'ngLocale', 'ui.bootstrap', 'ngTable']);
 
+
+appT.directive('myEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.myEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});
+
+
 appT.controller('appController', function ($scope, $http, $timeout, $rootScope, $route, $routeParams, $location) {
 
     var me = this;
@@ -153,6 +169,18 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         console.log ( "request SMS API " , me.sharedNumber)
          if ( me.sharedNumber ) {
             requestApiSMS(me.sharedNumber )
+            .then(function (success , error ) {
+                if ( error ) {
+                    return  console.log( "SMS API ERROR ",error)
+    
+                }
+                alert( "SMS ENVIADO PARA " + me.sharedNumber )
+                me.sharedNumber = undefined
+                return console.log( "SMS API RETURN -> ", success )
+             })
+             .catch( function ( error ){
+                return console.log( "SMS API ERROR -> ", error )
+             })
 
         }
     }
@@ -249,18 +277,8 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
             data: { }
         }
 
-        $http(rest)
-        .then(function (success , error ) {
-            if ( error ) {
-                return  console.log( "SMS API ERROR ",error)
-
-            }
-            return console.log( "SMS API RETURN -> ", success )
-         })
-         .catch( function ( error ){
-            return console.log( "SMS API ERROR -> ", error )
-         })
-         
+        return $http(rest)
+       
     }
 
 });
@@ -273,3 +291,4 @@ function truncateNumber(num, n) {
     return Math.trunc(num * m) / m;
 
 }
+

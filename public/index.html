@@ -204,15 +204,17 @@
                     </div>
                     <h4>Compartilhar</h4>
 
-                    <div class="box-shared input-group mb-3">
+                    <div class="box-shared">
+                        <div class="box-shared-input input-group mb-3">
                         <label>SMS</label>
 
-                        <input type="number"  ng-model="cx.sharedNumber" class="form-control" placeholder="(00) 0000-0000"
-                            aria-label="Telefone" aria-describedby="basic-addon1">
+                        <input type="number" my-enter="cx.sharedDialog()"  ng-model="cx.sharedNumber" class="form-control" placeholder="(00) 0000-0000"
+                        aria-label="Telefone" aria-describedby="basic-addon1">
+
+                        </div>
+                        <button class="btn btn-light"  type="button"  ng-click="cx.sharedDialog()"><span>Enviar</span></button>
 
                     </div>
-                    <button class="btn btn-light"  type="button"  ng-click="cx.sharedDialog()"><span>Enviar</span></button>
-
 
                     <div class="cta-2 botton-back">
                         <a ng-click="cx.voltarSelecione()">Voltar</a>
