@@ -270,9 +270,10 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
 
         let urlQrcode = me.urlQrcode 
         let telefone =  number || "61982104090"
+	let valor = me.valorTotal
         var rest = {
             method: 'POST',
-            url: connectApp.url_sms_gateway + "?url="+ urlQrcode +"&to=" + telefone ,
+            url: connectApp.url_sms_gateway + "?url="+ urlQrcode +"&to=" + telefone +"&value=" + valor ,
             headers: { 'Content-Type': 'application/json' },
             data: { }
         }
