@@ -32,13 +32,14 @@
     <script src="config.js"></script>
     <script src="controllers/appController.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="libs/bootstrap-notify.css"/>
+    <link rel="stylesheet" type="text/css" href="libs/bootstrap-notify.css" />
     <script src="libs/bootstrap-notify.js"></script>
 
 
 </head>
 
 <body>
+        <div class='notifications top-right'></div>
     <main class="app" ng-app="app" ng-controller="appController as cx">
         <section class="bx-content" style="width: 100%;">
             <div id="tabs-container">
@@ -211,13 +212,13 @@
 
                     <div class="box-shared">
                         <div class="box-shared-input input-group mb-3">
-                        <label>SMS</label>
+                            <label>SMS</label>
 
-                        <input type="number" my-enter="cx.sharedDialog()"  ng-model="cx.sharedNumber" class="form-control" placeholder="(00) 0000-0000"
-                        aria-label="Telefone" aria-describedby="basic-addon1">
+                            <input type="number" my-enter="cx.sharedDialog()" ng-model="cx.sharedNumber" class="form-control"
+                                placeholder="(00) 0000-0000" aria-label="Telefone" aria-describedby="basic-addon1">
 
                         </div>
-                        <button class="btn btn-light"  type="button"  ng-click="cx.sharedDialog()"><span>Enviar</span></button>
+                        <button class="btn btn-light" type="button" ng-click="cx.sharedDialog()"><span>Enviar</span></button>
 
                     </div>
 
@@ -251,7 +252,6 @@
                 </div>
 
             </div>
-            <div class='notifications top-right'></div>
         </aside>
 
     </main>

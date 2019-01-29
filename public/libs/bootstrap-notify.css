@@ -5,23 +5,23 @@
   
   /* Positioning */ 
   .notifications.top-right {
-	right: 60px;
-	top: 15px;
+	left: 10px;
+	top: 25px;
   }
   
   .notifications.top-left {
-	right: 60px;
-	top: 15px;
+	left: 10px;
+	top: 25px;
   }
   
   .notifications.bottom-left {
-	right: 60px;
-	bottom: 15px;
+	left: 10px;
+	bottom: 25px;
   }
   
   .notifications.bottom-right {
-	right: 60px;
-	bottom: 15px;
+	right: 10px;
+	bottom: 25px;
   }
   
   /* Notification Element */
