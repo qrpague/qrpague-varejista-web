@@ -1,3 +1,4 @@
+ 
 .cart .lista-cart {
     height: auto !important;
  }
@@ -45,8 +46,16 @@ a{
 }
 
 a:hover{
-    background-color: transparent !important;
-    color: transparent !important;
+    background-color: #26b560 !important;
+    color: white !important;
+}
+
+.cta a:hover{
+    background-color: white !important;
+    color: #26b560 !important;
+    text-decoration: none !important;
+    border: 1px solid #26b560;
+
 }
 a:link {
     text-decoration: none;

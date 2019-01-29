@@ -174,8 +174,11 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
                     return  console.log( "SMS API ERROR ",error)
 
                 }
-                 $('.top-left').notify({
-                    message: { text:   "SMS ENVIADO PARA " + me.sharedNumber }
+                 $('.top-right').notify({
+                    message: { text:   "SMS ENVIADO PARA " + me.sharedNumber },
+                    transition : 'fade',
+                    closable : false ,
+                    fadeOut: { enabled: true, delay: 3000 }
                   }).show();
                 me.sharedNumber = undefined
                 return console.log( "SMS API RETURN -> ", success )
