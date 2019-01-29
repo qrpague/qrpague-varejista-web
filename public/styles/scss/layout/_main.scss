@@ -95,7 +95,7 @@ body {
     height: 81vh;
     overflow-y: auto;
 
-    padding: 35px;
+    padding: 10px;
 
     > .item-produto {
         @include column(1/3, $cycle: 3);
@@ -169,7 +169,6 @@ body {
         padding: 14px 0px;
         border-bottom: 1px solid #dddddd;
 
-        margin-bottom: 30px;
     }
 
     .lista-cart {
@@ -326,6 +325,7 @@ body {
 
         margin-top: 20px;
         padding: 15px;
+        text-decoration: none !important;
 
         border-radius: 6px;
 
