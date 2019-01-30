@@ -42,7 +42,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         { id: 3, titulo: 'X-bacon', valor: 15.99, url: connectApp.image_shared_url + 'images/f3.png' },
         { id: 4, titulo: 'X-tudo tradicional', valor: 20.99, url: connectApp.image_shared_url + 'images/f2.png' },
         { id: 5, titulo: 'X-simples', valor: 8.99, url: connectApp.image_shared_url + 'images/f5.png' },
-        { id: 6, titulo: 'X-dog', valor: 9.99, url: connectApp.image_shared_url + 'images/f1.png' }
+        { id: 6, titulo: 'X-simples + bacon', valor: 9.99, url: connectApp.image_shared_url + 'images/f5.png' }
     ]
 
 

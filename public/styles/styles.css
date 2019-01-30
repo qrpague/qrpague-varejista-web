@@ -131,6 +131,8 @@ body {
     margin-bottom: 30px; 
     
   }
+
+   
     .lista-produtos > .item-produto::after {
       content: '';
       display: table;
