@@ -18,16 +18,29 @@ var connectApp =
   connectApp.protocol = 'http';
   connectApp.host = '0.0.0.0';
   connectApp.port = '9093';
-  connectApp.websocket_url = 'wss://0.0.0.0:4000';
+  connectApp.websocket_url = 'ws://0.0.0.0:4000';
   connectApp.image_shared_url = 'http://0.0.0.0:9093/';
+  connectApp.url_sms_gateway = 'https:/lab.sicoobnet.com.br/sms';
 
  
   connectApp.idTerminal =  Math.floor((Math.random() * 99999) + 1)
   connectApp.terminal = {
-    "idTerminal": "0001128322332",
-    "descricao": "Terminal b9384 ",
+    "idTerminal":  connectApp.idTerminal ,
+    "descricao": "Terminal  " + connectApp.idTerminal,
     "uf": "DF",
     "cep": "70000-000",
     "latitudeTerminal": "-15.7801",
     "longitudeTerminal": "-47.9292"
   }
+
+
+  $(document).ready(function () {
+    $(".tabs-menu a").click(function (event) {
+        event.preventDefault();
+        $(this).parent().addClass("current");
+        $(this).parent().siblings().removeClass("current");
+        var tab = $(this).attr("href");
+        $(".tab-content").not(tab).css("display", "none");
+        $(tab).fadeIn();
+    });
+});

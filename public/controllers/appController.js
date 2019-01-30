@@ -4,8 +4,8 @@ var appT = angular.module('app', ['ngMaterial', 'ngRoute', 'ngLocale', 'ui.boots
 appT.directive('myEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
-            if(event.which === 13) {
-                scope.$apply(function (){
+            if (event.which === 13) {
+                scope.$apply(function () {
                     scope.$eval(attrs.myEnter);
                 });
 
@@ -20,7 +20,21 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
 
     var me = this;
     var escopo = $scope;
-    me.urlQrcode = ""
+    me.urlQrcode = undefined
+
+    let sizeQrcode = (window.innerHeight > 700) ? 256 : 150
+    let options = {
+        width: sizeQrcode,
+        height: sizeQrcode,
+        text: '',
+        colorDark: "#000000",
+        colorLight: "#ffffff"
+    }
+
+
+
+    me.qrcode = new QRCode(document.getElementById("qrcode"), options)
+
 
     me.listaSanduiches = [
         { id: 1, titulo: 'X-buger', valor: 10.99, url: connectApp.image_shared_url + 'images/f1.png' },
@@ -51,7 +65,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         { id: 6, titulo: 'Cupcake baunilha', valor: 9.99, url: connectApp.image_shared_url + 'images/s1.png' }
     ]
 
-    
+
     me.listaPedido = [];
     me.valorTotal = 0;
 
@@ -62,22 +76,11 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
     me.dataPagamento = new Date();
     me.contTryConnect = 0;
 
-    let options = {
-        width: 256,
-        height: 256,
-        text: '',
-        colorDark: "#000000",
-        colorLight: "#ffffff"
-    }
 
-
-    me.qrcode = new QRCode(document.getElementById("qrcode"), options)
-
-    me.hash = me.hash = CryptoJS.MD5(new Date().getTime()).toString();
 
     conectarSocket();
 
-    
+
     me.adicionarSanduiche = function (id) {
         me.listaPedido.push({ indice: new Date(), dados: me.listaSanduiches[id] });
         me.valorTotal += me.listaSanduiches[id].valor;
@@ -135,6 +138,9 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
     }
 
     me.buscaQRCode = function () {
+
+
+
         var rest = {
             method: 'POST',
             url: connectApp.toUrl() + "/qrcode",
@@ -163,26 +169,26 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         me.pagamentoEfetuado = false;
     }
 
-   
-    me.sharedNumber = undefined 
-    me.sharedDialog = function( ){
-        console.log ( "request SMS API " , me.sharedNumber)
-         if ( me.sharedNumber ) {
-            requestApiSMS(me.sharedNumber )
-            .then(function (success , error ) {
-                if ( error ) {
-                    return  console.log( "SMS API ERROR ",error)
 
-                }
+    me.sharedNumber = undefined
+    me.sharedDialog = function () {
+        console.log("request SMS API ", me.sharedNumber)
+        if (me.sharedNumber) {
+            requestApiSMS(me.sharedNumber)
+                .then(function (success, error) {
+                    if (error) {
+                        return console.log("SMS API ERROR ", error)
 
-                msg( "SMS ENVIADO PARA " + me.sharedNumber)
-       
-                me.sharedNumber = undefined
-                return console.log( "SMS API RETURN -> ", success )
-             })
-             .catch( function ( error ){
-                return console.log( "SMS API ERROR -> ", error )
-             })
+                    }
+
+                    msg("SMS ENVIADO PARA " + me.sharedNumber)
+
+                    me.sharedNumber = undefined
+                    return console.log("SMS API RETURN -> ", success)
+                })
+                .catch(function (error) {
+                    return console.log("SMS API ERROR -> ", error)
+                })
 
         }
     }
@@ -222,12 +228,12 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
                 $scope.$apply();
             }, 2000)
 
-            setTimeout(function(){ me.novaVenda()} , 5000)
+            setTimeout(function () { me.novaVenda() }, 5000)
 
 
         }, 100)
     }
-    
+
 
     $('.bx-content').css({ width: "100%" });
     $('.bx-right').css({ right: -500, 'min-width': '0px', 'width': '0px' });
@@ -237,8 +243,8 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
     }, 200)
 
 
-    
-    function conectarSocket( ) {
+
+    function conectarSocket() {
 
         var params = new URLSearchParams()
         params.append('idTerminal', connectApp.idTerminal)
@@ -253,35 +259,35 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         }
         me.connection.onclose = function (event) {
             console.log("Connection closed")
-                 // Try to reconnect in 5 seconds
-                setTimeout(function(){ conectarSocket() } , 1500) ;
-           
-         }
+            // Try to reconnect in 5 seconds
+            setTimeout(function () { conectarSocket() }, 1500);
+
+        }
         me.connection.onerror = function (event) {
             console.error("Connection error")
-         }
+        }
         me.connection.onmessage = function (event) {
             me.mostraPagamentoEfetuado();
         }
     };
 
-    function requestApiSMS ( number ) {
+    function requestApiSMS(number) {
         //TODO: implementar code.
         //0.0.0.0:9006/sms?url=https://lab.sicoobnet.com.br/qrpague/operacoes/5c4b60c6ec76b375ad7e8066&to=61999999999
-         
 
-        let urlQrcode = me.urlQrcode 
-        let telefone =  number || "61982104090"
-	let valor = me.valorTotal
+
+        let urlQrcode = me.urlQrcode
+        let telefone = number || "61982104090"
+        let valor = me.valorTotal
         var rest = {
             method: 'POST',
-            url: connectApp.url_sms_gateway + "?url="+ urlQrcode +"&to=" + telefone +"&value=" + valor ,
+            url: connectApp.url_sms_gateway + "?url=" + urlQrcode + "&to=" + telefone + "&value=" + valor,
             headers: { 'Content-Type': 'application/json' },
-            data: { }
+            data: {}
         }
 
         return $http(rest)
-       
+
     }
 
 });
@@ -295,11 +301,11 @@ function truncateNumber(num, n) {
 
 }
 
-function msg( msg  , type ) {
+function msg(msg, type) {
     $('.top-right').notify({
-        message: { text:   msg },
-        transition : 'fade',
-        closable : false ,
+        message: { text: msg },
+        transition: 'fade',
+        closable: false,
         fadeOut: { enabled: true, delay: 3000 }
-      }).show();
+    }).show();
 }
