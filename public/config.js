@@ -44,3 +44,22 @@ var connectApp =
         $(tab).fadeIn();
     });
 });
+
+
+
+function truncateNumber(num, n) {
+
+  let m = Math.pow(10, n);
+
+  return Math.trunc(num * m) / m;
+
+}
+
+function msg(msg, type ) {
+  $(type).notify({
+      message: { text: msg },
+      transition: 'fade',
+      closable: false,
+      fadeOut: { enabled: true, delay: 3000 }
+  }).show();
+}

@@ -1,22 +1,8 @@
-var appT = angular.module('app', ['ngMaterial', 'ngRoute', 'ngLocale', 'ui.bootstrap', 'ngTable']);
+var apps = angular.module('app', ['ngMaterial', 'ngRoute', 'ngLocale', 'ui.bootstrap', 'ngTable']);
 
 
-appT.directive('myEnter', function () {
-    return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
-            if (event.which === 13) {
-                scope.$apply(function () {
-                    scope.$eval(attrs.myEnter);
-                });
 
-                event.preventDefault();
-            }
-        });
-    };
-});
-
-
-appT.controller('appController', function ($scope, $http, $timeout, $rootScope, $route, $routeParams, $location) {
+apps.controller('appController', function ($scope, $http, $timeout, $rootScope, $route, $routeParams, $location) {
 
     var me = this;
     var escopo = $scope;
@@ -30,9 +16,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         colorDark: "#000000",
         colorLight: "#ffffff"
     }
-
-
-
+ 
     me.qrcode = new QRCode(document.getElementById("qrcode"), options)
 
 
@@ -181,7 +165,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
 
                     }
 
-                    msg("SMS ENVIADO PARA " + me.sharedNumber)
+                    msg("SMS ENVIADO PARA " + me.sharedNumber , 'top-left')
 
                     me.sharedNumber = undefined
                     return console.log("SMS API RETURN -> ", success)
@@ -234,6 +218,7 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         }, 100)
     }
 
+ 
 
     $('.bx-content').css({ width: "100%" });
     $('.bx-right').css({ right: -500, 'min-width': '0px', 'width': '0px' });
@@ -293,19 +278,3 @@ appT.controller('appController', function ($scope, $http, $timeout, $rootScope, 
 });
 
 
-function truncateNumber(num, n) {
-
-    let m = Math.pow(10, n);
-
-    return Math.trunc(num * m) / m;
-
-}
-
-function msg(msg, type) {
-    $('.top-right').notify({
-        message: { text: msg },
-        transition: 'fade',
-        closable: false,
-        fadeOut: { enabled: true, delay: 3000 }
-    }).show();
-}

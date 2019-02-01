@@ -10,36 +10,45 @@
 
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/app.css">
-    <script src="libs/jquery-1.11.3.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="libs/angular-material.min.css">
-    <link rel="stylesheet" href="libs/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="libs/font-awesome.min.css">
+    <script src="libs/others-modules/jquery-1.11.3.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="libs/others-modules/angular-material.min.css">
+    <link rel="stylesheet" href="libs/others-modules/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="libs/others-modules/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="libs/others-modules/bootstrap-notify.css" />
 
 
-    <script src="libs/bootstrap.min.js"></script>
-    <script src="libs/angular.min.js"></script>
-    <script src="libs/angular-animate.min.js"></script>
-    <script src="libs/angular-aria.min.js"></script>
-    <script src="libs/ui-bootstrap.min.js"></script>
-    <script src="libs/angular-material.min.js"></script>
-    <script src="libs/crypto-js.js"></script>
-    <script src="libs/qrcode.min.js"></script>
+    <script src="libs/others-modules/bootstrap.min.js"></script>
+    <script src="libs/others-modules/angular.min.js"></script>
+    <script src="libs/others-modules/angular-animate.min.js"></script>
+    <script src="libs/others-modules/angular-aria.min.js"></script>
+    <script src="libs/others-modules/ui-bootstrap.min.js"></script>
+    <script src="libs/others-modules/angular-material.min.js"></script>
+    <script src="libs/others-modules/crypto-js.js"></script>
+    <script src="libs/others-modules/qrcode.min.js"></script>
+    <script src="libs/others-modules/angular-locale_pt-br.js"></script>
+    <script src="libs/others-modules/ng-table.js"></script>
+    <script src="libs/others-modules/angular-route.js"></script>
+    <script src="libs/others-modules/bootstrap-notify.js"></script>
 
-    <script src="libs/angular-locale_pt-br.js"></script>
-    <script src="libs/ng-table.js"></script>
-    <script src="libs/angular-route.js"></script>
+
+
+
+    <!-- application modules and variables config  -->
     <script src="config.js"></script>
     <script src="controllers/appController.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="libs/bootstrap-notify.css" />
-    <script src="libs/bootstrap-notify.js"></script>
+    <script src="libs/directives.js"></script>
 
 
 </head>
 
 <body>
-        <div class='notifications top-right'></div>
+
+    <div class='notifications top-right'></div>
+    <div class='notifications top-left'></div>
+
     <main class="app" ng-app="app" ng-controller="appController as cx">
         <section class="bx-content" style="width: 100%;">
             <div id="tabs-container">
@@ -256,7 +265,6 @@
 
     </main>
 
-    
 </body>
 
 </html>
