@@ -240,16 +240,16 @@ apps.controller('appController', function ($scope, $http, $timeout, $rootScope, 
         me.connection = new WebSocket(urlPath);
 
         me.connection.onopen = function (event) {
-            console.log("Connection opened")
+            console.log("Websocket donnection opened")
         }
         me.connection.onclose = function (event) {
-            console.log("Connection closed")
-            // Try to reconnect in 5 seconds
+            console.log("Websocket connection closed")
+
             setTimeout(function () { conectarSocket() }, 1500);
 
         }
         me.connection.onerror = function (event) {
-            console.error("Connection error")
+            console.error("Websocket connection error")
         }
         me.connection.onmessage = function (event) {
             me.mostraPagamentoEfetuado();
@@ -257,9 +257,7 @@ apps.controller('appController', function ($scope, $http, $timeout, $rootScope, 
     };
 
     function requestApiSMS(number) {
-        //TODO: implementar code.
-        //0.0.0.0:9006/sms?url=https://lab.sicoobnet.com.br/qrpague/operacoes/5c4b60c6ec76b375ad7e8066&to=61999999999
-
+ 
 
         let urlQrcode = me.urlQrcode
         let telefone = number || "61982104090"
