@@ -30,7 +30,10 @@ var connectApp =
     "uf": "DF",
     "cep": "70000-000",
     "latitudeTerminal": "-15.7801",
-    "longitudeTerminal": "-47.9292"
+    "longitudeTerminal": "-47.9292",
+    "empresa_logomarca" : "static/payment_company_icon.svg",
+    "empresa_nome" : "Rapifood"
+    
   }
 
 
@@ -46,6 +49,14 @@ var connectApp =
 });
 
 
+$('.bx-content').css({ width: "100%" });
+$('.bx-right').css({ right: -500, 'min-width': '0px', 'width': '0px' });
+setTimeout(function () {
+    $('.bx-right').animate({ right: 0, 'min-width': '328px', 'width': '328px' }, 500);
+    $('.bx-content').css({ width: "100%" });
+}, 200)
+
+
 
 function truncateNumber(num, n) {
 
@@ -55,7 +66,7 @@ function truncateNumber(num, n) {
 
 }
 
-function msg(msg, type ) {
+function Msg(msg, type ) {
   $(type).notify({
       message: { text: msg },
       transition: 'fade',
